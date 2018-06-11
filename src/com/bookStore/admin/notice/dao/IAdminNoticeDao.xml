@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookStore.admin.notice.dao.IAdminNoticeDao">
+
+    <select id="selectNoticeCount" resultType="int">
+        select count(*) from notice
+    </select>
+    <select id="selectListNotice" resultType="Notice">
+        select * from notice limit #{start}, #{pageSize}
+    </select>
+    
+    <insert id="insertNotice">
+        insert into notice(title, details, n_time) values(#{title}, #{details}, #{n_time})
+    </insert>
+    
+    <select id="selectNoticeById" resultType="Notice">
+        select * from notice where n_id = #{id}
+    </select>
+    
+    <update id="updateNotice">
+        update notice set title = #{title}, details = #{details}, n_time = #{n_time} where n_id = #{n_id}
+    </update>
+    
+    <delete id="deleteNoticeById">
+        delete from notice where n_id = #{id}
+    </delete>
+
+
+</mapper>
